@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This script configures the Makefile
+if [ "$1" == "--arch=x86" ]
+then
+    export AS=nasm
+    export QEMU_TYPE=i386
+
+else
+    echo "Defaulting to x86"
+    export AS=nasm
+    export QEMU_TYPE=i386
+fi
+
+echo "Completed with success"
