@@ -35,4 +35,4 @@ install:
 	sudo losetup /dev/loop19 $(BASEDIR)/disk.img
 	sudo mkdosfs -F 32 /dev/loop19
 	sudo losetup -d /dev/loop19
-	dd if=disk_boot.mbr of=$(BASEDIR)/disk.img bs=1 count=512 seek=79 skip=79
+	dd if=disk_boot.mbr of=$(BASEDIR)/disk.img bs=1 count=512 seek=79 skip=79 conv=notrunc

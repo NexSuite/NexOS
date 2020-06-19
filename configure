@@ -5,11 +5,13 @@ if [ "$1" == "--arch=x86" ]
 then
     export AS=nasm
     export QEMU_TYPE=i386
+    export BOOT_CC=i686-w64-mingw32-gcc
 
 else
     echo "Defaulting to x86"
     export AS=nasm
     export QEMU_TYPE=i386
+    export BOOT_CC=i686-w64-mingw32-gcc
 fi
 
 echo "Completed with success"

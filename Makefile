@@ -18,4 +18,11 @@ run:
 	for dir in $(PROJECTS); do \
 		(cd $$dir; ${MAKE} install) \
 	done
+	mkdir fs
+	sudo losetup /dev/loop19 disk.img
+	sudo mount /dev/loop19 fs
+	sudo cp rootdir/* fs/
+	sudo umount fs
+	sudo losetup -d /dev/loop19
+	rm -r fs
 	qemu-system-$(QEMU_TYPE) -hda disk.img

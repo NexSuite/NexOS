@@ -516,7 +516,7 @@ MsgErrFind      db      "NF"
 ;; Name of the file to load and run ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-ProgramName     db      "STARTUP BIN"   ; name and extension each must be
+ProgramName     db      "NEXLDR     "   ; name and extension each must be
                                         ; padded with spaces (11 bytes total)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
