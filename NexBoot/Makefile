@@ -7,7 +7,7 @@ SYSROOT?=../rootdir
 INCLUDEDIR?=../Include
 LIBDIR?=/lib
 
-CFLAGS:=$(CFLAGS) -ffreestanding -Wall -I../Include $(DEFINES) -Iinclude
+CFLAGS:=$(CFLAGS) -ffreestanding -Wall -I../Include -I../../Include -I ../../../Include$(DEFINES) -IInclude
 LIBS:=$(LIBS) -nostdlib -lgcc
 
 include $(BOOTARCHDIR)/make.config
@@ -15,6 +15,7 @@ include $(BOOTARCHDIR)/make.config
 LOAD_OBJS=\
 	$(ARCH_LOAD_OBJS) \
 	NexBoot.o \
+	Runtime.o \
 
 OBJS=\
 	$(LOAD_OBJS) \

@@ -4,12 +4,14 @@
     See LICENSE
 */
 
-#include <nexdef.h>
+#include <Nexboot.h>
 #include "Include/Multiboot.h"
 
 // C entry point
 
 VOID NbEntry(DWORD magic, MULTIBOOT_INFO* bootinfo)
 {
+    NbSerialInit();
+    NbDebug("Serial test\r\n");
     for(;;);
 }
