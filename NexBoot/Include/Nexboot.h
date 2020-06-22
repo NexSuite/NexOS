@@ -8,6 +8,7 @@
 #define _NEXBOOT_H
 
 #include <nexdef.h>
+#include <Multiboot.h>
 
 INT NbStrLen(PSTR str);
 VOID NbIntToStr(UINT i, PSTR str, INT base);
@@ -18,9 +19,12 @@ VOID NbSerialInit();
 VOID NbSerialWriteChar(CHAR c);
 VOID NbSerialWriteString(PSTR s);
 VOID NbDebug(PSTR s);
-#if defined(ARCH_X86) || defined (ARCH_X64)
 BYTE NbInByte(WORD port);
 VOID NbOutByte(WORD port, BYTE val);
-#endif
+void NbInitAllocator(MULTIBOOT_INFO* bootinfo);
+void NbFreeBlocks(void* p, int num);
+void* NbAllocBlocks(int num);
+void* NbAllocBlock();
+void NbFreeBlock(void* p);
 
 #endif

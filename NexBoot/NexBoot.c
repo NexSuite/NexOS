@@ -5,13 +5,15 @@
 */
 
 #include <Nexboot.h>
-#include "Include/Multiboot.h"
+#include <Multiboot.h>
 
 // C entry point
 
 VOID NbEntry(DWORD magic, MULTIBOOT_INFO* bootinfo)
 {
+    if(magic != MULTIBOOT_BOOTLOADER_MAGIC)
+        asm("int $0x19");                   // Restart computer by triple faulting
     NbSerialInit();
-    NbDebug("Serial test\r\n");
+    NbInitAllocator(bootinfo);
     for(;;);
 }

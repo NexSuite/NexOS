@@ -7,7 +7,7 @@ SYSROOT?=../rootdir
 INCLUDEDIR?=../Include
 LIBDIR?=/lib
 
-CFLAGS:=$(CFLAGS) -ffreestanding -Wall -I../Include -I../../Include -I ../../../Include$(DEFINES) -IInclude
+CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror -I../Include -I../../Include -I ../../../Include$(DEFINES) -IInclude
 LIBS:=$(LIBS) -nostdlib -lgcc
 
 include $(BOOTARCHDIR)/make.config
