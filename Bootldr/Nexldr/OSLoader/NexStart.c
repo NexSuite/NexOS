@@ -1,4 +1,0 @@
-void NexldrStart()
-{
-    for(;;);
-}

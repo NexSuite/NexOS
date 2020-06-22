@@ -1,0 +1,12 @@
+megs: 512
+romimage: file=$BXSHARE/BIOS-bochs-legacy
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+ata0-master: type=disk, path="nexos.img", mode=flat
+boot: disk
+display_library: x
+log: bochs.log
+com1: enabled=1, mode=file, dev="debug.txt"
+cpu: ips=1000000
+magic_break: enabled=1
+clock: sync=realtime
+cpuid: 1g_pages=1

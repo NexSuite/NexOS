@@ -1,3 +1,5 @@
 # The ignore list
 fs
 rootdir
+bochs.log
+nexos.img

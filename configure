@@ -5,13 +5,32 @@ if [ "$1" == "--arch=x86" ]
 then
     export AS=nasm
     export QEMU_TYPE=i386
-    export BOOT_CC=i686-w64-mingw32-gcc
-
+    export CC=i686-w64-mingw32-gcc
+    export BCC=i686-elf-gcc
+    export AS=nasm
+    export BAS_ARCH=elf32
+    export BOOTARCHDIR=Arch/x86
+    export ARCH=x86
+elif [ "$1" == "--arch=x64" ]
+then
+    export AS=nasm
+    export QEMU_TYPE=x86_64
+    export CC=x86_64-w64-mingw32-gcc
+    export BCC=x86_64-elf-gcc
+    export AS=nasm
+    export BAS_ARCH=elf64
+    export BOOTARCHDIR=Arch/x64
+    export ARCH=x64
 else
     echo "Defaulting to x86"
     export AS=nasm
     export QEMU_TYPE=i386
-    export BOOT_CC=i686-w64-mingw32-gcc
+    export CC=i686-w64-mingw32-gcc
+    export BCC=i686-elf-gcc
+    export AS=nasm
+    export BAS_ARCH=elf32
+    export BOOTARCHDIR=Arch/x86
+    export ARCH=x86
 fi
 
 echo "Completed with success"
