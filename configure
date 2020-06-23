@@ -6,23 +6,31 @@ then
     export AS=nasm
     export QEMU_TYPE=i386
     export CC=i686-w64-mingw32-gcc
+    export AR=i686=w64-mingw32-ar
+    export AS_ARCH=win32
     export BCC=i686-elf-gcc
     export AS=nasm
     export BAS_ARCH=elf32
     export BOOTARCHDIR=Arch/x86
     export DEFINES=-DARCH_X86
     export ARCH=x86
+    export ENTRY=_KeEntry
+    export IMAGE_BASE=0xC0000000
 elif [ "$1" == "--arch=x64" ]
 then
     export AS=nasm
     export QEMU_TYPE=x86_64
     export CC=x86_64-w64-mingw32-gcc
+    export AR=x86_64=w64-mingw32-ar
     export BCC=x86_64-elf-gcc
     export AS=nasm
     export BAS_ARCH=elf64
+    export AS_ARCH=win64
     export BOOTARCHDIR=Arch/x64
     export DEFINES=-DARCH_X64
+    export ENTRY=KeEntry
     export ARCH=x64
+    export IMAGE_BASE=0xFFFFFFFF80000000
 else
     echo "Defaulting to x86"
     export AS=nasm
@@ -34,6 +42,10 @@ else
     export BOOTARCHDIR=Arch/x86
     export DEFINES=-DARCH_X86
     export ARCH=x86
+    export IMAGE_BASE=0xC0000000
+    export AR=i686=w64-mingw32-ar
+    export AS_ARCH=win32
+    export ENTRY=_KeEntry
 fi
 
 echo "Completed with success"

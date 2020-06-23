@@ -108,15 +108,19 @@ entry:                              ; OS entry point
     mov eax, kernel_pml4            ; Get PML4
     mov cr3, eax                    ; Load PML4
 
+    mov eax, cr0                    ; Get CR0
+    or eax, 1 << 17                 ; Set WP bit
+    mov cr0, eax
+
     mov ecx, 0xC0000080            ; Select EFER MSR
     rdmsr
     or eax, 1 << 8                  ; Set long mode bit
+    or eax, 1 << 11                 ; Set NX bit
     wrmsr                           ; Enable long mode
     
     mov eax, cr0                    ; Get CR0
     or eax, 1 << 31                 ; Set bit 31 (PG)
     mov cr0, eax                    ; Enable paging
-
     lgdt [GDT64Ptr32]               ; Load 64 bit GDT
     jmp 0x08:entry64                ; Far jump to 64 bit code
 

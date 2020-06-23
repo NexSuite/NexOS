@@ -30,6 +30,7 @@ void NbFreeBlock(void* p);
 INT NbPagingInit();
 VOID NbZeroMemory(VOID* block, DWORD count);
 VOID NbLongToStr(ULONGLONG i, PSTR str, INT base);
+INT NbKernelExec(MULTIBOOT_INFO* bootinfo);
 
 #if defined(ARCH_X86)
 #define PG_PRESENT 1
@@ -58,6 +59,8 @@ typedef struct tagPAGETABLE
 typedef DWORD PTE;
 typedef PTE PDE;
 typedef DWORD VIRTUALADDR;
+#define ARCH_PE_MAGIC 0x010B
+#define KERNEL_VIRTUAL_BASE 0xC0000000
 #elif defined(ARCH_X64)
 #define PML4_GET_INDEX(addr) (((addr) >> 39) & 0x1FF)
 #define PDPT_GET_INDEX(addr) (((addr) >> 30) & 0x1FF)
@@ -86,6 +89,7 @@ typedef DWORD VIRTUALADDR;
 #define PAGE_WRITETHROUGH (1 << 3)
 #define PAGE_CACHE_DISABLED (1 << 4)
 #define PG_FRAME 0xFFFFFFFFFF000
+#define PG_NX 0x8000000000000000
 
 typedef struct tagPAGETABLE
 {
@@ -107,9 +111,102 @@ typedef struct tagADDRSPACE
     QWORD entries[512];
 }ADDRSPACE;
 typedef QWORD VIRTUALADDR;
+#define KERNEL_VIRTUAL_BASE 0xFFFFFFFF80000000
+#define ARCH_PE_MAGIC 0x020B
 #else
 #error "No architecture specified!"
 #endif
+
+#ifdef ARCH_I686
+typedef DWORD PE_VA;
+#else
+typedef QWORD PE_VA;
+#endif
+
+typedef struct tagIMAGE_DOS_HEADER
+{
+    USHORT e_magic;
+    USHORT e_cblp;
+    USHORT e_cp;
+    USHORT e_crlc;
+    USHORT e_cparhdr;
+    USHORT e_minalloc;
+    USHORT e_maxalloc;
+    USHORT e_ss;
+    USHORT e_sp;
+    USHORT e_csum;
+    USHORT e_ip;
+    USHORT e_cs;
+    USHORT e_lfarlc;
+    USHORT e_ovno;
+    USHORT e_res[4];
+    USHORT e_oemid;
+    USHORT e_oeminfo;
+    USHORT e_res2[10];
+    DWORD e_lfanew;
+}IMAGE_DOS_HEADER, *PIMAGE_DOS_HEADER;
+
+typedef struct tagIMAGE_FILE_HEADER 
+{
+    USHORT  Machine;
+    USHORT  NumberOfSections;
+    DWORD   TimeDateStamp;
+    DWORD   PointerToSymbolTable;
+    DWORD   NumberOfSymbols;
+    USHORT  SizeOfOptionalHeader;
+    USHORT  Characteristics;
+}IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;
+
+#define IMAGE_NUMBEROF_DIRECTORY_ENTRIES 14
+
+typedef struct tagIMAGE_DATA_DIRECTORY 
+{
+    DWORD VirtualAddress;
+    DWORD Size;   
+}IMAGE_DATA_DIRECTORY, *PIMAGE_DATA_DIRECTORY;
+
+typedef struct tagIMAGE_OPTIONAL_HEADER 
+{
+    USHORT Magic;
+    BYTE MajorLinkerVersion;
+    BYTE MinorLinkerVersion;
+    DWORD SizeOfCode;
+    DWORD SizeOfInitializedData;
+    DWORD SizeOfUninitializedData;
+    DWORD AddressOfEntryPoint;
+    DWORD BaseOfCode;
+    #ifdef ARCH_X86
+    DWORD BaseOfData;
+    #endif
+    PE_VA ImageBase;
+    DWORD SectionAlignment;
+    DWORD FileAlignment;
+    WORD MajorOperatingSystemVersion;
+    WORD MinorOperatingSystemVersion;
+    WORD MajorImageVersion;
+    WORD MinorImageVersion;
+    WORD MajorSubsystemVersion;
+    WORD MinorSubsystemVersion;
+    DWORD Win32VersionValue;
+    DWORD SizeOfImage;
+    DWORD SizeOfHeaders;
+    DWORD CheckSum;
+    WORD Subsystem;
+    WORD DllCharacteristics;
+    PE_VA SizeOfStackReserve;
+    PE_VA SizeOfStackCommit;
+    PE_VA SizeOfHeapReserve;
+    PE_VA SizeOfHeapCommit;
+    DWORD LoaderFlags;
+    DWORD NumberOfRvaAndSizes;
+}IMAGE_OPTIONAL_HEADER, *PIMAGE_OPTIONAL_HEADER;
+
+typedef struct tagIMAGE_PE_HEADERS
+{
+    DWORD magic;
+    IMAGE_FILE_HEADER fileHeader;
+    IMAGE_OPTIONAL_HEADER optHeader;
+}IMAGE_PE_HEADERS, *PIMAGE_PE_HEADERS;
 
 INT NbMemMapAddr(VIRTUALADDR virt, VIRTUALADDR phys, DWORD flags);
 

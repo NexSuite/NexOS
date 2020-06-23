@@ -53,7 +53,7 @@ INT NbMemMapAddr(VIRTUALADDR virt, VIRTUALADDR phys, DWORD flags)
     }
     else
     {
-        pdpt_phys = GetFrame(*entry);
+        pdpt_phys = (PDPT*)GetFrame(*entry);
     }
 
     entry = &map_table->entries[PAGE_TABLE_GET_INDEX(PDPT_INDEX)];
@@ -72,7 +72,7 @@ INT NbMemMapAddr(VIRTUALADDR virt, VIRTUALADDR phys, DWORD flags)
     }
     else
     {
-        dir_phys = GetFrame(*entry);
+        dir_phys = (PAGEDIRECTORY*)GetFrame(*entry);
     }
 
     entry = &map_table->entries[PAGE_TABLE_GET_INDEX(PDIR_INDEX)];
@@ -91,7 +91,7 @@ INT NbMemMapAddr(VIRTUALADDR virt, VIRTUALADDR phys, DWORD flags)
     }
     else
     {
-        table_phys = GetFrame(*entry);
+        table_phys = (PAGETABLE*)GetFrame(*entry);
     }
     entry = &map_table->entries[PAGE_TABLE_GET_INDEX(PTAB_INDEX)];
     PAGETABLE* table = (PAGETABLE*)PTAB_INDEX;
@@ -139,7 +139,7 @@ INT NbPagingInit()
 
     QWORD* pte = &table->entries[PAGE_TABLE_GET_INDEX(0xFFFFFFFF7FE00000)];
     *pte = PG_PRESENT | PG_WRITEABLE;
-    SetFrame(pte, table);
+    SetFrame(pte, (QWORD)table);
 
     pdbr = (QWORD)&pml4->entries;
     SwitchDir();

@@ -15,6 +15,15 @@ VOID NbEntry(DWORD magic, MULTIBOOT_INFO* bootinfo)
         asm("int $0x19");                   // Restart computer by triple faulting
     NbSerialInit();
     NbInitAllocator(bootinfo);
-    NbPagingInit();
+    if(!NbPagingInit())
+    {
+        NbDebug("Not enough memory!\r\n");
+        asm("int $0x19");
+    }
+    if(!NbKernelExec(bootinfo))
+    {
+        NbDebug("Not enough memory!\r\n");
+        asm("int $0x19");
+    }
     for(;;);
 }

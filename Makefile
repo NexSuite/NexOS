@@ -1,6 +1,6 @@
 .PHONY: all clean run
 
-PROJECTS = NexBoot
+PROJECTS = NexBoot NexKe
 
 all:
 	for dir in $(PROJECTS); do \

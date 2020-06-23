@@ -8,18 +8,17 @@ INCLUDEDIR?=../Include
 LIBDIR?=/lib
 
 CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -I../Include -I../../Include -I ../../../Include $(DEFINES) -IInclude
+LDFLAGS:=-Wl,--subsystem,native -Wl,--image-base,$(IMAGE_BASE) -Wl,--file-alignment,4096 -Wl,--section-alignment,4096 \
+-Wl,--entry,$(ENTRY) -Wl,--dynamicbase
+
 LIBS:=$(LIBS) -nostdlib -lgcc
 
-include $(BOOTARCHDIR)/make.config
-
-LOAD_OBJS=\
+KE_OBJS=\
 	$(ARCH_LOAD_OBJS) \
-	NexBoot.o \
-	Runtime.o \
-	Loader.o \
+	Kernel.o \
 
 OBJS=\
-	$(LOAD_OBJS) \
+	$(KE_OBJS) \
 
 LINK_LIST=\
 	$(OBJS) \
@@ -29,22 +28,21 @@ LINK_LIST=\
 
 .SUFFIXES: .o .c .asm
 
-all: nexboot
+all: NexKe.exe
 
-nexboot: $(OBJS)
-	$(BCC) -T$(BOOTARCHDIR)/link.ld  -o $@ -z max-page-size=4096 $(CFLAGS) $(LINK_LIST)
-	grub-file --is-x86-multiboot nexboot
+NexKe.exe: $(OBJS)
+	$(CC) -o $@ $(CFLAGS) $(LINK_LIST) $(LDFLAGS)
 
 .c.o:
-	$(BCC) -MD -c $< -o $@ $(CFLAGS)
+	$(CC) -MD -c $< -o $@ $(CFLAGS)
 .asm.o:
-	$(AS) -f$(BAS_ARCH) -o $@ $<
+	$(AS) -f$(AS_ARCH) -o $@ $<
 clean:
-	rm -f nexload
+	rm -f NexKe.exe
 	rm -f $(OBJS) *.o */*.o */*/*.o
 	rm -f $(OBJS:.o=.d) *.d */*.d */*/*.d
 
 install:
-	cp nexboot $(DESTDIR)/nexboot
+	mv NexKe.exe ../NexKe.exe
 
 -include $(OBJS:.o=.d)
