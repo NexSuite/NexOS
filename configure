@@ -10,6 +10,7 @@ then
     export AS=nasm
     export BAS_ARCH=elf32
     export BOOTARCHDIR=Arch/x86
+    export DEFINES=-DARCH_X86
     export ARCH=x86
 elif [ "$1" == "--arch=x64" ]
 then
@@ -20,6 +21,7 @@ then
     export AS=nasm
     export BAS_ARCH=elf64
     export BOOTARCHDIR=Arch/x64
+    export DEFINES=-DARCH_X64
     export ARCH=x64
 else
     echo "Defaulting to x86"
@@ -30,6 +32,7 @@ else
     export AS=nasm
     export BAS_ARCH=elf32
     export BOOTARCHDIR=Arch/x86
+    export DEFINES=-DARCH_X86
     export ARCH=x86
 fi
 

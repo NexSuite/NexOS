@@ -15,5 +15,6 @@ VOID NbEntry(DWORD magic, MULTIBOOT_INFO* bootinfo)
         asm("int $0x19");                   // Restart computer by triple faulting
     NbSerialInit();
     NbInitAllocator(bootinfo);
+    NbPagingInit();
     for(;;);
 }

@@ -1,4 +1,4 @@
-megs: 512
+megs: 2048
 romimage: file=$BXSHARE/BIOS-bochs-legacy
 vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
 ata0-master: type=disk, path="nexos.img", mode=flat

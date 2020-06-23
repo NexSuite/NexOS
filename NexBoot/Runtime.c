@@ -44,6 +44,44 @@ VOID NbIntToStr(UINT i, PSTR str, INT base)
     str[opos] = 0;
 }
 
+VOID NbLongToStr(ULONGLONG i, PSTR str, INT base)
+{
+    int pos = 0;
+    int opos = 0;
+    int top = 0;
+    if(i == 0 || base > 16)
+    {
+        str[0] = '0';
+        str[1] = '\0';
+        return;
+    }
+    while (i != 0)
+    {
+        buf[pos] = bchars[i % base];
+        pos++;
+        i /= base;
+    }
+    top = pos--;
+
+    for (opos = 0; opos < top; pos--, opos++) 
+    {
+        str[opos] = buf[pos];
+    }
+    str[opos] = 0;
+}
+
+VOID NbLongToStrSigned(LONGLONG i, PSTR str, INT base)
+{
+    if(base > 16)
+        return;
+    if(i < 0)
+    {
+        *str++ = '-';
+        i *= -1;
+    }
+    NbIntToStr(i, str, base);
+}
+
 VOID NbIntToStrSigned(INT i, PSTR str, INT base)
 {
     if(base > 16)
@@ -62,6 +100,12 @@ VOID* NbCopyMemory(VOID* dest, VOID* src, DWORD count)
 	char* dp = (char*)dest;
 	for (; count != 0; count--) *dp++ = *sp++;
 	return dest;
+}
+
+VOID NbZeroMemory(VOID* block, DWORD count)
+{
+    unsigned char* temp = (unsigned char*)block;
+	for (; count != 0; count--, temp[count] = 0);
 }
 
 INT NbCmpStr(PSTR str1, PSTR str2)

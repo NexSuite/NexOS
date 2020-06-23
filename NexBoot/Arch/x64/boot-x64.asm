@@ -1,6 +1,7 @@
 ; NexOS x86_64 bootstrap file
 ; Distributed with NexOS, licensed under the GPL v3.0
 ; See LICENSE
+; Partialy taken from the LemonOS project. Portions from LemonOS are copyright JJ Roberts-White, licensed under the BSD 2 clause license
 
 bits 32
 
@@ -84,6 +85,14 @@ entry:                              ; OS entry point
     test edx, 1 << 29
     jz s                            ; If not, halt system.
 
+    mov eax, cr0
+    and ax, 0xFFFB		            ; Clear coprocessor emulation CR0.EM
+    or ax, 0x2			            ; Set coprocessor monitoring  CR0.MP
+    mov cr0, eax
+    mov eax, cr4
+    or ax, 3 << 9		            ; Set CR4.OSFXSR and CR4.OSXMMEXCPT at the same time
+    mov cr4, eax
+
     mov eax, cr4                    ; Get CR4 in EAX
     or eax, 1 << 5                  ; Set PAE bit
     mov cr4, eax                    ; Restore CR4
@@ -111,7 +120,9 @@ entry:                              ; OS entry point
     lgdt [GDT64Ptr32]               ; Load 64 bit GDT
     jmp 0x08:entry64                ; Far jump to 64 bit code
 
-s:  cli
+s:
+    int 19h
+    cli
     hlt
 
 bits 64                             ; We are in Long Mode
