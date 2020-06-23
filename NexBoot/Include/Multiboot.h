@@ -55,4 +55,37 @@ typedef struct tagMULTIBOOT_MODULE
     DWORD reserved;
 }MULTIBOOT_MODULE;
 
+typedef struct tagMEMINFO
+{
+	QWORD memCount;
+	DWORD memMapAddr;
+	DWORD memMapLength;
+}MEMINFO;
+
+typedef struct tagMODULEINFO
+{
+	DWORD moduleCount;
+	DWORD moduleAddress;
+}MODULEINFO;
+
+typedef struct tagVIDINFO
+{
+	QWORD framebufferAddr;
+	DWORD framebufferPitch;
+	DWORD framebufferWidth;
+	DWORD framebufferHeight;
+	BYTE framebufferBpp;
+	BYTE framebufferType;
+}VIDINFO;
+
+typedef struct tagNEXBOOTINFO
+{
+	CHAR sig[6];
+	DWORD cmdLine;
+	DWORD bootDevice;
+	MEMINFO memInfo;
+	MODULEINFO modInfo;
+	VIDINFO vidInfo;
+}NEXBOOTINFO;
+
 #endif

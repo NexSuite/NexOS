@@ -1,0 +1,5 @@
+create ../../Libs/Klib.lib
+addlib ../../Libs/Krt.lib
+addlib ../../Libs/BootDrivers.lib
+save
+end

@@ -51,8 +51,30 @@ INT NbKernelExec(MULTIBOOT_INFO* bootinfo)
 
     DWORD entry = peHeader->optHeader.AddressOfEntryPoint;
     PE_VA entryPoint = entry + KERNEL_VIRTUAL_BASE;
-    VOID (*Kernel)() = (VOID(*)())(entryPoint);
-    Kernel();
+    VOID (*Kernel)(NEXBOOTINFO*) = (VOID(*)(NEXBOOTINFO*))(entryPoint);
+
+    NEXBOOTINFO nexinfo;
+    nexinfo.sig[0] = 'N';
+    nexinfo.sig[1] = 'e';
+    nexinfo.sig[2] = 'x';
+    nexinfo.sig[3] = 'O';
+    nexinfo.sig[4] = 'S';
+    nexinfo.sig[5] = '\0';
+    nexinfo.bootDevice = bootinfo->bootDevice;
+    nexinfo.cmdLine = bootinfo->cmdline;
+    nexinfo.memInfo.memCount = bootinfo->memLower + bootinfo->memUpper + 1024;
+    nexinfo.memInfo.memMapAddr = bootinfo->memMapAddress;
+    nexinfo.memInfo.memMapLength = bootinfo->memMapLength;
+    nexinfo.modInfo.moduleAddress = bootinfo->moduleAddress;
+    nexinfo.modInfo.moduleCount = bootinfo->moduleCount;
+    nexinfo.vidInfo.framebufferAddr = bootinfo->framebufferAddr;
+    nexinfo.vidInfo.framebufferBpp = bootinfo->framebufferBpp;
+    nexinfo.vidInfo.framebufferHeight = bootinfo->framebufferHeight;
+    nexinfo.vidInfo.framebufferPitch = bootinfo->framebufferPitch;
+    nexinfo.vidInfo.framebufferWidth = bootinfo->framebufferWidth;
+    nexinfo.vidInfo.framebufferType = bootinfo->framebufferType;
+
+    Kernel(&nexinfo);
 
     return 1;
 }

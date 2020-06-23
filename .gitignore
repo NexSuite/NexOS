@@ -4,3 +4,4 @@ rootdir
 bochs.log
 nexos.img
 debug.txt
+Libs/*.lib

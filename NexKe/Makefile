@@ -1,6 +1,6 @@
 .PHONY: all clean install
 
-PROJECTS = Kernel
+PROJECTS = Runtime BootDrivers Kernel
 
 all:
 	for dir in $(PROJECTS); do \
@@ -11,7 +11,8 @@ clean:
 	for dir in $(PROJECTS); do \
 		(cd $$dir; ${MAKE} clean) \
 	done;
-	
+	rm -f NexKe.exe
+
 install:
 	for dir in $(PROJECTS); do \
 		(cd $$dir; ${MAKE} install) \

@@ -1,4 +1,4 @@
-CFLAGS?=-g -O3
+CFLAGS?=-g -O2
 LDFLAGS?=
 LIBS?=
 
@@ -7,15 +7,14 @@ SYSROOT?=../rootdir
 INCLUDEDIR?=../Include
 LIBDIR?=/lib
 
-CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -I../Include -I../../Include -I ../../../Include $(DEFINES) -IInclude
+CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -Werror=array-bounds -I../../Include $(DEFINES) -IInclude
 LDFLAGS:=-Wl,--subsystem,native -Wl,--image-base,$(IMAGE_BASE) -Wl,--file-alignment,4096 -Wl,--section-alignment,4096 \
 -Wl,--entry,$(ENTRY) -Wl,--dynamicbase
 
-LIBS:=$(LIBS) -nostdlib -lgcc
+LIBS:=$(LIBS) ../../Libs/Klib.lib -nostdlib -lgcc
 
 KE_OBJS=\
-	$(ARCH_LOAD_OBJS) \
-	Kernel.o \
+	Start/Entry.o \
 
 OBJS=\
 	$(KE_OBJS) \
@@ -31,6 +30,7 @@ LINK_LIST=\
 all: NexKe.exe
 
 NexKe.exe: $(OBJS)
+	$(AR) -M <libs.mri
 	$(CC) -o $@ $(CFLAGS) $(LINK_LIST) $(LDFLAGS)
 
 .c.o:

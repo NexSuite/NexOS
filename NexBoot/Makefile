@@ -7,7 +7,7 @@ SYSROOT?=../rootdir
 INCLUDEDIR?=../Include
 LIBDIR?=/lib
 
-CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -I../Include -I../../Include -I ../../../Include $(DEFINES) -IInclude
+CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=array-bounds -Werror=implicit-function-declaration -I../Include -I../../Include -I ../../../Include $(DEFINES) -IInclude
 LIBS:=$(LIBS) -nostdlib -lgcc
 
 include $(BOOTARCHDIR)/make.config
@@ -40,7 +40,7 @@ nexboot: $(OBJS)
 .asm.o:
 	$(AS) -f$(BAS_ARCH) -o $@ $<
 clean:
-	rm -f nexload
+	rm -f nexboot
 	rm -f $(OBJS) *.o */*.o */*/*.o
 	rm -f $(OBJS:.o=.d) *.d */*.d */*/*.d
 

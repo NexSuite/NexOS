@@ -48,6 +48,15 @@ INT NbPagingInit()
     e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00000000)];
     *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
     SetFrame(e, 0x0);
+    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00400000)];
+    *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
+    SetFrame(e, 0x400000);
+    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00800000)];
+    *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
+    SetFrame(e, 0x800000);
+    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00C00000)];
+    *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
+    SetFrame(e, 0xC00000);
     pdbr = (DWORD)&dir->entries;
     SwitchDir();
     EnablePaging();

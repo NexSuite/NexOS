@@ -11,6 +11,7 @@ clean:
 	for dir in $(PROJECTS); do \
 		(cd $$dir; ${MAKE} clean) \
 	done;
+	rm -f Libs/*.lib
 	rm -rf rootdir
 
 run:
