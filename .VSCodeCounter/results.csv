@@ -1,0 +1,62 @@
+"filename", "language", "JSON with Comments", "Makefile", "EditorConfig", "Properties", "C", "C++", "x86 and x86_64 Assembly", "LinkerScript", "Markdown", "comment", "blank", "total"
+"/home/nexware/NexOS/.editorconfig", "EditorConfig", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 4, 14
+"/home/nexware/NexOS/.gitattributes", "Properties", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 2
+"/home/nexware/NexOS/Include/Kernel/BootDrv.h", "C++", 0, 0, 0, 0, 0, 6, 0, 0, 0, 5, 5, 16
+"/home/nexware/NexOS/Include/Kernel/Kernel.h", "C++", 0, 0, 0, 0, 0, 42, 0, 0, 0, 6, 11, 59
+"/home/nexware/NexOS/Include/Kernel/Runtime.h", "C++", 0, 0, 0, 0, 0, 15, 0, 0, 0, 5, 9, 29
+"/home/nexware/NexOS/Include/Kernel/System.h", "C++", 0, 0, 0, 0, 0, 27, 0, 0, 0, 5, 5, 37
+"/home/nexware/NexOS/Include/nexdef.h", "C++", 0, 0, 0, 0, 0, 22, 0, 0, 0, 8, 10, 40
+"/home/nexware/NexOS/Makefile", "Makefile", 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 6, 51
+"/home/nexware/NexOS/NexBoot/Arch/x64/Memory.c", "C", 0, 0, 0, 0, 141, 0, 0, 0, 0, 6, 18, 165
+"/home/nexware/NexOS/NexBoot/Arch/x64/Paging.c", "C", 0, 0, 0, 0, 120, 0, 0, 0, 0, 5, 24, 149
+"/home/nexware/NexOS/NexBoot/Arch/x64/PagingInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 6, 0, 0, 3, 4, 13
+"/home/nexware/NexOS/NexBoot/Arch/x64/Serial.c", "C", 0, 0, 0, 0, 39, 0, 0, 0, 0, 5, 8, 52
+"/home/nexware/NexOS/NexBoot/Arch/x64/boot-x64.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 119, 0, 0, 6, 28, 153
+"/home/nexware/NexOS/NexBoot/Arch/x64/link.ld", "LinkerScript", 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 5, 26
+"/home/nexware/NexOS/NexBoot/Arch/x86/Memory.c", "C", 0, 0, 0, 0, 141, 0, 0, 0, 0, 6, 18, 165
+"/home/nexware/NexOS/NexBoot/Arch/x86/Paging.c", "C", 0, 0, 0, 0, 53, 0, 0, 0, 0, 5, 7, 65
+"/home/nexware/NexOS/NexBoot/Arch/x86/PagingInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 18, 0, 0, 3, 6, 27
+"/home/nexware/NexOS/NexBoot/Arch/x86/Serial.c", "C", 0, 0, 0, 0, 39, 0, 0, 0, 0, 5, 8, 52
+"/home/nexware/NexOS/NexBoot/Arch/x86/boot-x86.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 37, 0, 0, 3, 6, 46
+"/home/nexware/NexOS/NexBoot/Arch/x86/link.ld", "LinkerScript", 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 5, 27
+"/home/nexware/NexOS/NexBoot/Include/Multiboot.h", "C++", 0, 0, 0, 0, 0, 74, 0, 0, 0, 5, 13, 92
+"/home/nexware/NexOS/NexBoot/Include/Nexboot.h", "C++", 0, 0, 0, 0, 0, 181, 0, 0, 0, 6, 27, 214
+"/home/nexware/NexOS/NexBoot/Loader.c", "C", 0, 0, 0, 0, 64, 0, 0, 0, 0, 5, 12, 81
+"/home/nexware/NexOS/NexBoot/Makefile", "Makefile", 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 14, 51
+"/home/nexware/NexOS/NexBoot/NexBoot.c", "C", 0, 0, 0, 0, 20, 0, 0, 0, 0, 6, 4, 30
+"/home/nexware/NexOS/NexBoot/Runtime.c", "C", 0, 0, 0, 0, 103, 0, 0, 0, 0, 6, 15, 124
+"/home/nexware/NexOS/NexKe/BootDrivers/Makefile", "Makefile", 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 12, 35
+"/home/nexware/NexOS/NexKe/BootDrivers/Serial/Serial.c", "C", 0, 0, 0, 0, 18, 0, 0, 0, 0, 5, 6, 29
+"/home/nexware/NexOS/NexKe/Hal/Makefile", "Makefile", 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 15, 44
+"/home/nexware/NexOS/NexKe/Hal/x64/Cpu.c", "C", 0, 0, 0, 0, 60, 0, 0, 0, 0, 5, 10, 75
+"/home/nexware/NexOS/NexKe/Hal/x64/Gdt.c", "C", 0, 0, 0, 0, 27, 0, 0, 0, 0, 5, 7, 39
+"/home/nexware/NexOS/NexKe/Hal/x64/GdtInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 16, 0, 0, 3, 4, 23
+"/home/nexware/NexOS/NexKe/Hal/x64/Idt.c", "C", 0, 0, 0, 0, 35, 0, 0, 0, 0, 5, 7, 47
+"/home/nexware/NexOS/NexKe/Hal/x64/IdtInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 6, 0, 0, 3, 4, 13
+"/home/nexware/NexOS/NexKe/Hal/x64/Include/Gdt.h", "C++", 0, 0, 0, 0, 0, 20, 0, 0, 0, 5, 8, 33
+"/home/nexware/NexOS/NexKe/Hal/x64/Include/Idt.h", "C++", 0, 0, 0, 0, 0, 20, 0, 0, 0, 5, 7, 32
+"/home/nexware/NexOS/NexKe/Hal/x64/Isr.c", "C", 0, 0, 0, 0, 116, 0, 0, 0, 0, 5, 6, 127
+"/home/nexware/NexOS/NexKe/Hal/x64/IsrStub.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 82, 0, 0, 3, 9, 94
+"/home/nexware/NexOS/NexKe/Hal/x86-common/Hal.c", "C", 0, 0, 0, 0, 10, 0, 0, 0, 0, 5, 3, 18
+"/home/nexware/NexOS/NexKe/Hal/x86-common/Include/Hal.h", "C++", 0, 0, 0, 0, 0, 8, 0, 0, 0, 5, 5, 18
+"/home/nexware/NexOS/NexKe/Hal/x86/Cpu.c", "C", 0, 0, 0, 0, 50, 0, 0, 0, 0, 5, 10, 65
+"/home/nexware/NexOS/NexKe/Hal/x86/Gdt.c", "C", 0, 0, 0, 0, 27, 0, 0, 0, 0, 5, 7, 39
+"/home/nexware/NexOS/NexKe/Hal/x86/GdtInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 14, 0, 0, 3, 4, 21
+"/home/nexware/NexOS/NexKe/Hal/x86/Idt.c", "C", 0, 0, 0, 0, 33, 0, 0, 0, 0, 5, 7, 45
+"/home/nexware/NexOS/NexKe/Hal/x86/IdtInt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 6, 0, 0, 3, 4, 13
+"/home/nexware/NexOS/NexKe/Hal/x86/Include/Gdt.h", "C++", 0, 0, 0, 0, 0, 20, 0, 0, 0, 5, 8, 33
+"/home/nexware/NexOS/NexKe/Hal/x86/Include/Idt.h", "C++", 0, 0, 0, 0, 0, 18, 0, 0, 0, 5, 7, 30
+"/home/nexware/NexOS/NexKe/Hal/x86/Isr.c", "C", 0, 0, 0, 0, 116, 0, 0, 0, 0, 5, 6, 127
+"/home/nexware/NexOS/NexKe/Hal/x86/IsrStub.asm", "x86 and x86_64 Assembly", 0, 0, 0, 0, 0, 0, 73, 0, 0, 3, 7, 83
+"/home/nexware/NexOS/NexKe/Kernel/Makefile", "Makefile", 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 14, 51
+"/home/nexware/NexOS/NexKe/Kernel/Start/Entry.c", "C", 0, 0, 0, 0, 14, 0, 0, 0, 0, 5, 4, 23
+"/home/nexware/NexOS/NexKe/Kernel/Start/Init.c", "C", 0, 0, 0, 0, 10, 0, 0, 0, 0, 5, 3, 18
+"/home/nexware/NexOS/NexKe/Kernel/Start/Panic.c", "C", 0, 0, 0, 0, 9, 0, 0, 0, 0, 5, 3, 17
+"/home/nexware/NexOS/NexKe/Makefile", "Makefile", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 5, 21
+"/home/nexware/NexOS/NexKe/Runtime/Makefile", "Makefile", 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 12, 36
+"/home/nexware/NexOS/NexKe/Runtime/Memory/Memory.c", "C", 0, 0, 0, 0, 13, 0, 0, 0, 0, 5, 4, 22
+"/home/nexware/NexOS/NexKe/Runtime/String/String.c", "C", 0, 0, 0, 0, 104, 0, 0, 0, 0, 6, 14, 124
+"/home/nexware/NexOS/NexOS.code-workspace", "JSON with Comments", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8
+"/home/nexware/NexOS/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 3
+"/home/nexware/NexOS/grub/grub.cfg", "Properties", 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 5
+"Total", "-", 8, 211, 10, 5, 1362, 453, 377, 43, 2, 224, 496, 3191

@@ -14,7 +14,8 @@ INT HalCpuInit()
 {
     HalGdtInit();
     HalIdtInit();
-    asm("div %0" : : "r"(0));
+    if(!HalInitApic())
+        KePanic("APIC not present!\r\n");
     return 1;
 }
 

@@ -39,6 +39,7 @@ INT NbKernelExec(MULTIBOOT_INFO* bootinfo);
 #define PG_LARGE 0x80
 #define PG_NXE PG_PRESENT
 #define PG_FRAME 0x7FFFF000
+#define PAGE_CACHE_DISABLED 0x10
 
 #define PAGE_SIZE 4194304
 
