@@ -10,13 +10,19 @@
 #include <nexdef.h>
 
 INT RtlStrLen(PSTR str);
+
 VOID RtlIntToStr(UINT i, PSTR str, INT base);
 VOID RtlLongToStr(ULONGLONG i, PSTR str, INT base);
 VOID RtlLongToStrSigned(LONGLONG i, PSTR str, INT base);
 VOID RtlIntToStrSigned(INT i, PSTR str, INT base);
+
 VOID* RtlCopyMemory(VOID* dest, VOID* src, DWORD count);
 VOID RtlZeroMemory(VOID* block, DWORD count);
+
 INT RtlCmpStr(PSTR str1, PSTR str2);
+PSTR RtlStrCpy(PSTR dest, PSTR src);
+PSTR RtlStrCat(PSTR dest, PSTR src);
+
 VOID RtlDebug(PSTR s);
 
 #endif

@@ -9,7 +9,6 @@
 
 #include <nexdef.h>
 
-VOID BootDrvSerialInit();
 VOID BootDrvSerialWriteChar(CHAR c);
 VOID BootDrvSerialWriteString(PSTR s);
 

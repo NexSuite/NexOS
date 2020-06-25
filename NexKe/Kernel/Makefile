@@ -15,6 +15,8 @@ LIBS:=$(LIBS) ../../Libs/Klib.lib -nostdlib -lgcc
 
 KE_OBJS=\
 	Start/Entry.o \
+	Start/Init.o \
+	Start/Panic.o \
 
 OBJS=\
 	$(KE_OBJS) \

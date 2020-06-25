@@ -53,14 +53,14 @@ align 16
 GDT64:                              ; 64 bit GDT
     dq 0                            ; Null Descriptor
 
-    dw 0                           ; Code descriptor
+    dw 0FFFFh                       ; Code descriptor
     dw 0
     db 0
     db 10011010b
     db 00100000b
     db 0
 
-    dw 0                            ; Data descriptor
+    dw 0FFFFh                      ; Data descriptor
     dw 0
     db 0
     db 10010010b
@@ -115,7 +115,7 @@ entry:                              ; OS entry point
     mov ecx, 0xC0000080            ; Select EFER MSR
     rdmsr
     or eax, 1 << 8                  ; Set long mode bit
-    or eax, 1 << 11                 ; Set NX bit
+    ;or eax, 1 << 11                 ; Set NX bit
     wrmsr                           ; Enable long mode
     
     mov eax, cr0                    ; Get CR0
@@ -132,7 +132,7 @@ s:
 bits 64                             ; We are in Long Mode
 
 entry64:                            ; 64 bit entry
-    lgdt [GDT64Ptr64]               ; Load 64 bit GDT pointer
+    ;lgdt [GDT64Ptr64]               ; Load 64 bit GDT pointer
     mov ax, 10h                     ; Load segments registers with 64 bit segments
     mov ds, ax
     mov es, ax

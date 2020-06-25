@@ -17,7 +17,7 @@ clean:
 run:
 	mkdir -p rootdir/System
 	mkdir -p rootdir/boot/grub
-	cp grub/grub-$(ARCH).cfg rootdir/boot/grub/grub.cfg
+	cp grub/grub.cfg rootdir/boot/grub/grub.cfg
 	for dir in $(PROJECTS); do \
 		(cd $$dir; ${MAKE} install) \
 	done

@@ -52,4 +52,7 @@ typedef struct tagNEXBOOTINFO
 	VIDINFO vidInfo;
 }NEXBOOTINFO;
 
+INT KeInit(NEXBOOTINFO* bootinfo);
+VOID KePanic(PSTR s);
+
 #endif

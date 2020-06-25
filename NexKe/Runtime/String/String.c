@@ -96,14 +96,28 @@ VOID RtlIntToStrSigned(INT i, PSTR str, INT base)
 
 INT RtlCmpStr(PSTR str1, PSTR str2)
 {
-    INT res = 0;
-    while (!(res = *(UCHAR*)str1 - *(UCHAR*)str2) && *str2)
-        ++str1, ++str2;
+    INT i = 0;
+    while(str1[i] != '\0' || str2[i] != '\0')
+    {
+        if(str1[i] != str2[i])
+            return 0;
+    }
+    return 1;
+}
 
-    if (res < 0)
-        res = -1;
-    if (res > 0)
-        res = 1;
+PSTR RtlStrCpy(PSTR dest, PSTR src)
+{
+    char* temp = dest;
+    while(*dest++ = *src++);
+    return temp;
+}
 
-    return res;
+PSTR RtlStrCat(PSTR dest, PSTR src)
+{
+	 char* ptr = dest + RtlStrLen(dest);
+	 while (*src != '\0')
+		*ptr++ = *src++;
+
+	*ptr = '\0';
+	return dest;
 }

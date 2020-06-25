@@ -7,13 +7,14 @@ then
     export QEMU_TYPE=i386
     export CC=i686-w64-mingw32-gcc
     export AR=i686-w64-mingw32-ar
-    export AS_ARCH=win32
+    export AS_ARCH=elf32
     export BCC=i686-elf-gcc
     export AS=nasm
-    export BAS_ARCH=elf32
+    export BAS_ARCH=win32
     export BOOTARCHDIR=Arch/x86
     export DEFINES=-DARCH_X86
     export ARCH=x86
+    export COMMON_ARCH=x86
     export ENTRY=_KeEntry
     export IMAGE_BASE=0xC0000000
 elif [ "$1" == "--arch=x64" ]
@@ -30,6 +31,7 @@ then
     export DEFINES=-DARCH_X64
     export ENTRY=KeEntry
     export ARCH=x64
+    export COMMON_ARCH=x86
     export IMAGE_BASE=0xFFFFFFFF80000000
 else
     echo "Defaulting to x86"
@@ -45,6 +47,7 @@ else
     export IMAGE_BASE=0xC0000000
     export AR=i686-w64-mingw32-ar
     export AS_ARCH=win32
+    export ARCH_COMMON=x86
     export ENTRY=_KeEntry
 fi
 

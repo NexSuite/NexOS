@@ -10,6 +10,13 @@
 
 VOID KeEntry(NEXBOOTINFO* bootinfo)
 {
-    RtlDebug("Hello from kernel!\r\n");
+    RtlDebug("Kernel starting...\r\n");
+
+    if(!KeInit(bootinfo))
+    {
+        RtlDebug("System initialization failed!\r\n");
+        asm("int $0x19");
+    }
+    RtlDebug("Kernel started.\r\n");
     for(;;);
 }

@@ -1,6 +1,6 @@
 .PHONY: all clean install
 
-PROJECTS = Runtime BootDrivers Kernel
+PROJECTS = Runtime BootDrivers Hal Kernel
 
 all:
 	for dir in $(PROJECTS); do \
