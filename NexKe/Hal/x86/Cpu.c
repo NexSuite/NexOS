@@ -14,6 +14,7 @@ INT HalCpuInit()
 {
     HalGdtInit();
     HalIdtInit();
+    asm("div %0" : : "r"(0));
     return 1;
 }
 

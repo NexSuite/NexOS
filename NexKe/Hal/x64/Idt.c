@@ -30,6 +30,7 @@ VOID HalIdtInit()
         HalIdtSetGate(i, (QWORD)HalDefHandler, 0x08, 0x8E, 0);
     }
     HalIdtFlush();
+    HalIsrInstall();
 }
 
 VOID HalIdtSetGate(BYTE num, QWORD base, WORD sel, BYTE flags, BYTE ist)
@@ -38,7 +39,7 @@ VOID HalIdtSetGate(BYTE num, QWORD base, WORD sel, BYTE flags, BYTE ist)
     idt[num].baseMid = (base >> 16) & 0xFFFF;
     idt[num].baseLow = base & 0xFFFF;
     idt[num].sel = sel;
-    idt[num].ist = ist & 0x7;
+    idt[num].ist = 0;
     idt[num].always0 = 0;
     idt[num].flags = flags;
 }

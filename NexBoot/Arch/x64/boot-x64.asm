@@ -148,5 +148,5 @@ entry64:                            ; 64 bit entry
 
 section .bss
 stack_bottom:                       ; The start of the stack
-    resb 16384                      ; Make a 16K stack
+    resb 32768                      ; Make a 32K stack
 stack_top:                          ; x86 architecture stack grows downwards

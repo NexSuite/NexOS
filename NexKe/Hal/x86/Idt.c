@@ -29,6 +29,7 @@ VOID HalIdtInit()
     {
         HalIdtSetGate(i, (DWORD)HalDefHandler, 0x08, 0x8E);
     }
+    HalIsrInstall();
     HalIdtFlush();
 }
 

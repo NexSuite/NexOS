@@ -12,5 +12,6 @@
 INT HalCpuInit();
 VOID HalGdtInit();
 VOID HalIdtInit();
+VOID HalIsrInstall();
 
 #endif
