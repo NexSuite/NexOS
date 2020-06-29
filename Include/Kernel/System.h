@@ -23,6 +23,8 @@ typedef struct tagREGS
     DWORD intNo, errCode;
     DWORD eip, cs, eflags, esp, ss;
 }REGS;
+typedef DWORD VIRTUALADDR;
+#define PLACEMENT_START 0xD0000000
 #else
 typedef struct tagREGS
 {
@@ -31,6 +33,13 @@ typedef struct tagREGS
     DWORD errCode, intNo;
     QWORD rip, cs, rflags, rsp, ss;
 }REGS;
+typedef QWORD VIRTUALADDR;
+#define PLACEMENT_START 0xFFFFFFFFA0000000
 #endif
+
+void* HalAllocBlock();
+void HalFreeBlock(void* p);
+void* HalAllocBlocks(int num);
+void HalFreeBlocks(void* p, int num);
 
 #endif

@@ -54,5 +54,6 @@ typedef struct tagNEXBOOTINFO
 
 INT KeInit(NEXBOOTINFO* bootinfo);
 VOID KePanic(PSTR s);
+VOID* KePlacementAlloc(DWORD size);
 
 #endif

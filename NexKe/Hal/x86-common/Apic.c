@@ -44,4 +44,11 @@ INT HalInitApic()
     HalOutByte(0xA1, 0x01);
     HalOutByte(0x21, 0x0);
     HalOutByte(0xA1, 0x0);
+
+    HalOutByte(0x21, 0xFF);
+	HalOutByte(0xA1, 0xFF);
+
+    if(!HalCheckApic())
+        return 0;
+    return 1;
 }

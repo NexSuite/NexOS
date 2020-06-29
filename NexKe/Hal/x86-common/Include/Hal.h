@@ -7,13 +7,14 @@
 #ifndef _HAL_H
 #define _HAL_H
 
-#include <nexdef.h>
+#include <Kernel/Kernel.h>
 
 INT HalCpuInit();
 VOID HalGdtInit();
 VOID HalIdtInit();
 VOID HalIsrInstall();
 INT HalInitApic();
+void HalInitAllocator(NEXBOOTINFO* info);
 
 enum 
 {

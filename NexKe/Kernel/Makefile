@@ -17,6 +17,7 @@ KE_OBJS=\
 	Start/Entry.o \
 	Start/Init.o \
 	Start/Panic.o \
+	Memmgr/Placement.o \
 
 OBJS=\
 	$(KE_OBJS) \

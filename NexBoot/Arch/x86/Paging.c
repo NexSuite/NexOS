@@ -40,6 +40,9 @@ INT NbMemMapAddr(VIRTUALADDR virt, VIRTUALADDR phys, DWORD flags)
 INT NbPagingInit()
 {
     dir = (ADDRSPACE*)NbAllocBlock();
+    CHAR buf[255];
+    NbIntToStr((DWORD)dir, buf, 16);
+    NbSerialWriteString(buf);
     if(!dir)
         return 0;
     PDE* e = &dir->entries[1023];
@@ -48,13 +51,7 @@ INT NbPagingInit()
     e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00000000)];
     *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
     SetFrame(e, 0x0);
-    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00400000)];
-    *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
-    SetFrame(e, 0x400000);
-    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00800000)];
-    *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
-    SetFrame(e, 0x800000);
-    e = &dir->entries[PAGE_DIRECTORY_INDEX(0x00C00000)];
+    e = &dir->entries[PAGE_DIRECTORY_INDEX(0xD0000000)];
     *e = PG_PRESENT | PG_WRITEABLE | PG_LARGE;
     SetFrame(e, 0xC00000);
     pdbr = (DWORD)&dir->entries;

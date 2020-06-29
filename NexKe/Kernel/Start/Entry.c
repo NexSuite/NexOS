@@ -6,12 +6,12 @@
 
 #include <Kernel/Runtime.h>
 #include <Kernel/Kernel.h>
+#include <Kernel/System.h>
 #include <Kernel/BootDrv.h>
 
 VOID KeEntry(NEXBOOTINFO* bootinfo)
 {
     RtlDebug("Kernel starting...\r\n");
-
     if(!KeInit(bootinfo))
     {
         RtlDebug("System initialization failed!\r\n");

@@ -3,7 +3,7 @@ CFLAGS?=-O2 -g
 INCLUDEDIR?=../../Include
 LIBDIR?=../../Libs
 
-CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -Werror=array-bounds \
+CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra -Werror=implicit-function-declaration -Werror=array-bounds \
 -I$(INCLUDEDIR) -I$(ARCH)/Include -I$(ARCH_COMMON)-common/Include $(DEFINES)
 
 include $(ARCH)/make.config

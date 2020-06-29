@@ -14,13 +14,11 @@ VOID NbEntry(DWORD magic, MULTIBOOT_INFO* bootinfo)
     if(magic != MULTIBOOT_BOOTLOADER_MAGIC)
         asm("int $0x19");                   // Restart computer by triple faulting
     NbSerialInit();
-    NbInitAllocator(bootinfo);
     if(!NbPagingInit())
     {
         NbDebug("Not enough memory!\r\n");
         asm("int $0x19");
     }
-    NbMemMapAddr(0xFEC00000, 0xFEC00000, PG_PRESENT | PG_WRITEABLE | PAGE_CACHE_DISABLED);
     if(!NbKernelExec(bootinfo))
     {
         NbDebug("Not enough memory!\r\n");

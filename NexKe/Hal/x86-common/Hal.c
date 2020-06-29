@@ -13,5 +13,6 @@ INT HalInit(NEXBOOTINFO* bootinfo)
 {
     if(!HalCpuInit())
         return 0;
+    HalInitAllocator(bootinfo);
     return 1;
 }

@@ -58,10 +58,6 @@ extern _HalIsrHandler
 
 isr_common:
     pushad
-    push ds
-    push es
-    push fs
-    push gs
     mov ax, 0x10
     mov ds, ax
     mov es, ax
@@ -72,10 +68,6 @@ isr_common:
     mov eax, _HalIsrHandler
     call eax
     pop eax
-    pop gs
-    pop fs
-    pop es
-    pop ds
     popad
     add esp, 8
     sti

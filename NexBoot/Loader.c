@@ -13,12 +13,6 @@ INT NbKernelExec(MULTIBOOT_INFO* bootinfo)
     DWORD kernelPhysBase = modules[0].modStart;
     DWORD kernelSize = modules[0].modEnd - modules[0].modStart;
 
-    if(!(kernelSize & 0xFFFFF000))
-    {
-        kernelSize &= 0xFFFFF000;
-        kernelSize += 0x1000;
-    }
-
     for(int i = 0; i < kernelSize; i += 4096)
     {
         INT res = NbMemMapAddr(KERNEL_VIRTUAL_BASE + i, kernelPhysBase + i, PG_PRESENT | PG_WRITEABLE);
